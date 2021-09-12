@@ -1,0 +1,23 @@
+version: "3"
+services:
+ web:
+   image: php:apache
+   container_name: php_blog
+   depends_on:
+    - DB
+   ports:
+    - "8089:80"
+   volumes:
+    - /var/www/html:/var/www/html
+ DB:
+   image: mariadb:latest
+   container_name: mysql_blog
+   ports:
+    - "3306:3306"
+   volumes:
+    - /var/lib/mysql:/var/lib/mysql
+   environment:
+     MYSQL_DATABASE: database_blog
+     MYSQL_USER: unkope
+     MYSQL_PASSWORD: database
+     MYSQL_ROOT_PASSWORD: "f2hpm143"
