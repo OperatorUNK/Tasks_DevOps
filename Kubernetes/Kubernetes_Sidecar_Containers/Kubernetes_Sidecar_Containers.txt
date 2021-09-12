@@ -1,0 +1,25 @@
+Kubernetes Sidecar Containers
+We have a web server container running the nginx image. The access and error logs produced by the web server are not critical enough to be placed on a persistent volume. However, Nautilus developers need access to the last 24 hours of logs so they can trace issues and bugs. Therefore, we need to ship the access and error logs for the web server to a log-aggregation service. Following the separation of concerns principle, we implement the Sidecar pattern by deploying a second container that ships the error and access logs from nginx. Nginx does one thing, and it does it well—serving web pages. The second container also specializes in its task—shipping logs. Since containers are running on the same Pod, we can use a shared emptyDir volume to read and write logs. 
+
+
+1. At first  kubectl  utility configure and working from jump server, run below commands
+kubectl get services
+kubectl get pods
+
+
+2.  Create yaml  file with all the parameters , you can copy form git lab
+vi /tmp/webserver.yaml
+
+check webserver.yaml in this repo folder
+
+3.  Run below command to create pod
+
+kubectl create -f /tmp/webserver.yaml
+
+
+4.  Wait for  pods to get running status
+kubectl get pods
+
+5.  Click on Finish & Confirm to complete the task successful
+
+
