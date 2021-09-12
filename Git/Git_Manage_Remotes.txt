@@ -1,0 +1,38 @@
+Git Manage Remotes
+
+The xFusionCorp development team added updates to the project that is maintained under /opt/apps.git repo and cloned under /usr/src/kodekloudrepos/apps. Recently some changes were made on Git server that is hosted on Storage server in Stratos DC. The DevOps team added some new Git remotes, so we need to update remote on /usr/src/kodekloudrepos/apps repository as per details mentioned below:
+a. In /usr/src/kodekloudrepos/apps repo add a new remote dev_apps and point it to /opt/xfusioncorp_apps.git repository.
+b. There is a file /tmp/index.html on same server; copy this file to the repo and add/commit to master branch.
+c. Finally push master branch to this new remote origin.
+
+1. At first login on storage server  & Switch to  root user 
+ssh natasha@172.16.238.15  
+sudo su - 
+
+ 2. Navigate to the cloned directory  
+cd /usr/src/kodekloudrepos/apps 
+ls -lah
+git status
+git branch -a
+
+3. Add Remote repo as per the task 
+git remote add dev_apps /opt/xfusioncorp_apps.git 
+
+4. Copy HTML file from tmp to repo and add 
+cp /tmp/index.html . 
+ls -lah
+
+5. Git initialize the new remote repo   
+git init
+
+6.  Add and commit the index.html file 
+git status
+git add index.html
+git commit -m "add index.html"
+
+7. Finally push the master branch to this new remote origin.
+git push -u dev_apps  master
+git status
+git branch -a
+
+8.  Click on Finish & Confirm to complete the task successfully
