@@ -1,0 +1,35 @@
+Create a Docker Network
+The Nautilus DevOps team needs to set up several docker environments for different applications. One of the team members has been assigned a ticket where he has been asked to create some docker networks to be used later. Complete the task based on the following ticket description:
+a. Create a docker network named as blog on App Server 3 in Stratos
+b. Configure it to use macvlan drivers.
+c. Set it to use subnet 192.168.30.0/24  and iprange 192.168.30.3/24 
+
+1. Login on app server  as per the task  &  Switch to  root user 
+ssh banner@stapp03 
+sudo su - 
+
+2. Check existing network on server 
+docker network ls 
+
+NETWORK ID          NAME                DRIVER              SCOPE
+bc6221d32cd7        bridge              bridge              local
+d7abbedae5f6        host                   host                 local
+ff2f676e4cee           none                null                   local
+[root@stapp03 ~]#
+
+3. Create a docker network as per the task use network name subnet  & IPrange 
+docker network create -d macvlan --subnet=192.168.30.0/24 --ip-range=192.168.30.3/24 blog
+
+4. Validate the task network has been created successfully  
+docker network ls 
+
+NETWORK ID          NAME                DRIVER              SCOPE
+bc6221d32cd7        bridge              bridge              local
+6d80bd900856       blog     	  macvlan          local 
+d7abbedae5f6        host                   host                 local
+ff2f676e4cee           none                null                   local
+[root@stapp03 ~]#
+
+docker network inspect blog 
+
+5.  Click on Finish & Confirm to complete the task successful 
