@@ -1,0 +1,41 @@
+The Puppet master and Puppet agent nodes have been set up by the Nautilus DevOps team so they can perform testing. In Stratos DC all app servers have been configured as Puppet agent nodes. Below are details about the testing scenario they want to proceed with.
+Use Puppet file resource and perform the task below:
+Create a Puppet programming file beta.pp under /etc/puppetlabs/code/environments/production/manifests directory on master node i.e Jump Server.
+Using /etc/puppetlabs/code/environments/production/manifests/beta.pp create a file beta.txt under /opt/dba directory on App Server 1.
+Note: Please perform this task using beta.pp only, do not create any separate inventory file.
+
+1. Go through the folder mentioned in task and create puppet files  
+cd /etc/puppetlabs/code/environments/production/manifests/ 
+ls -la
+vi beta.pp 
+cat beta.pp 
+
+class file_creator {
+  # Now create beta.txt under /opt/dba
+  file { '/opt/dba/beta.txt':
+    ensure => 'present',
+  }
+}
+ node 'stapp01.stratos.xfusioncorp.com' {
+  include file_creator
+}
+
+# check file puppet_task7.pp in this repo folder
+
+2. Validate the puppet files by below command.
+puppet parser validate beta.pp
+
+3. Login on requested App server  (stapp01) & switch to root  user    
+ssh tony@stapp01 
+sudo su
+
+4. Run Puppet agent to pull the configuration from puppet server
+[root@stapp01 ~]# puppet agent -tv
+
+5. Validate the task by running, check the file (beta.txt has been created)
+[root@stapp01 ~]# ll /opt/dba/ 
+ 
+6.  Click on Finish & Confirm to complete the task successful 
+
+
+
