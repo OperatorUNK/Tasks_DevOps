@@ -1,0 +1,25 @@
+apiVersion: apps/v1                                                                                             
+kind: Deployment                                                                                                
+metadata:                                                                                                       
+  creationTimestamp: null                                                                                       
+  labels:                                                                                                       
+    app: nagios-deployment                                                                                      
+  name: nagios-deployment                                                                                       
+spec:                                                                                                           
+  replicas: 1                                                                                                   
+  selector:                                                                                                     
+    matchLabels:                                                                                                
+      app: nagios-deployment                                                                                    
+  strategy: {}                                                                                                  
+  template:                                                                                                     
+    metadata:                                                                                                   
+      creationTimestamp: null                                                                                   
+      labels:                                                                                                   
+        app: nagios-deployment                                                                                  
+    spec:                                                                                                       
+      containers:                                                                                               
+      - image: jasonrivers/nagios                                                                               
+        name: nagios-container                                                                                  
+        resources: {}                                                                                           
+status: {}                                                                                                      
+        
