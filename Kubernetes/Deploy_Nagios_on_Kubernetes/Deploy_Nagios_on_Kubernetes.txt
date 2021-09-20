@@ -4,7 +4,8 @@ The Nautilus DevOps team is planning to set up a Nagios monitoring tool to monit
 2) Create a user and password for the Nagios core web interface, user must be xFusionCorp and password must be LQfKeWWxWD. (you can manually perform this step after deployment)
 3) Create a service nagios-service for Nagios, which must be of targetPort type. nodePort must be 30008.
 You can use any labels as per your choice.
-1. At first  kubectl  utility configure and working from jump server, run below commands
+
+1. At first use kubectl utility to run below commands
 kubectl get deploy
 kubectl get service
 kubectl get pods
@@ -14,32 +15,32 @@ vi /tmp/deploy.yaml
 
 deploy.yaml (ref to file in This repo nagios_deploy_task16.yaml)
 
-3.  Run below com=mands
+3.  Run below commands
 
 kubectl create -f /tmp/deploy.yaml
-kubectl get depl=oy
+kubectl get deploy
 
 4. Create the service
-vi /tmp/svc.yam=l
+vi /tmp/svc.yaml
 
 svc.yaml (ref to file in This repo nagios_service_task16.yaml)
 
-5.  Run below comman;ds
+5.  Run below commands
 kubectl create -f /tmp/svc.yaml
 
-6.  Wait for deploy;ment & pods to get running status
+6.  Wait for deployment & pods to get running status
 kubectl get service
 kubectl get pods -o wide
-kubectl get deploy;
+kubectl get deploy
 #wait until pods/services and deploy are ready
 
-7.  Run below command to login on po;d & open shell 
+7.  Run below command to login on pod & open shell 
 kubectl exec -it (pod name) -- /bin/bash
 
-# inside the pod check the hostname;
+# inside the pod check the hostname
 hostname
 # As per the task set username & password for Nagios core web interface
-(Refer your task username & password);
+(Refer your task username & password)
 htpasswd /opt/nagios/etc/htpasswd.users xFusionCorp
 
 # Enter new password provided at task description:;
