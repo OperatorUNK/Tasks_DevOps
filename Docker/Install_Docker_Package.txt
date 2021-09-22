@@ -16,8 +16,14 @@ ll /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose 
 ll /usr/local/bin/docker-compose 
 
+
 4. Validate by running version 
 docker-compose --version 
+# If encounter the following error
+([root@stapp01 tony]# sudo docker-compose --version
+sudo: docker-compose: command not found))
+# Use the following command
+ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
 5. To install docker-ce  need to configure repo from below link 
 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
