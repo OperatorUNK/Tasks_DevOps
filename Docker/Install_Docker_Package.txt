@@ -1,0 +1,43 @@
+Install Docker Package
+  
+Last week the Nautilus DevOps team met with the application development team and decided to containerize several of their applications. The DevOps team wants to do some testing per the following:
+Install docker-ce and docker-compose packages on App Server 1.
+Start docker service.
+
+1. Login on the App server 1 task & switch to root user 
+ssh tony@stapp01 
+sudo su
+
+2. Download Docker compose
+curl -L "https://github.com/docker/compose/releases/download/1.28.6/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose 
+
+3. Set  executable permission 
+ll /usr/local/bin/docker-compose 
+chmod +x /usr/local/bin/docker-compose 
+ll /usr/local/bin/docker-compose 
+
+4. Validate by running version 
+docker-compose --version 
+
+5. To install docker-ce  need to configure repo from below link 
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+6. Install docker   
+yum install docker-ce docker-ce-cli containerd.io 
+
+7. Verify  docker is installed
+rpm -qa |grep docker 
+
+
+
+8. Enable & start and check status of the docker service 
+systemctl enable docker 
+systemctl start  docker 
+systemctl status  docker 
+
+9. Validate the task 
+docker --version 
+docker ps 
+docker-compose --version 
+
+10.  Click on Finish & Confirm to complete the task successful 
