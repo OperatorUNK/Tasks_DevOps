@@ -21,4 +21,6 @@ ll
 5.  Add and commit the index.html file and push
 git add index.html 
 git commit -m "add index.html"  
-git push -u origin master 
+git push -u origin master
+
+6. Click on Finish & Confirm to complete the task successfully 
