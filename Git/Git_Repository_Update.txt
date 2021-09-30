@@ -1,0 +1,24 @@
+Git Repository Update
+The Nautilus development team started with new project development. They have created different Git repositories to manage respective project's source code. One of the repo /opt/demo.git was created recently. The team has given us a sample index.html file that is currently present on jump host under /tmp. The repository has been cloned at /usr/src/kodekloudrepos on storage server in Stratos DC.
+Copy sample index.html file from jump host to storage server under cloned repository at /usr/src/kodekloudrepos, add/commit the file and push to master branch.
+
+1.  At 1st SCP index.html file from jump server to the storage server
+sudo scp /tmp/index.html  natasha@172.16.238.15:/tmp
+
+2. Login on storage server  & Switch Root user 
+ssh natasha@172.16.238.15 
+sudo su -
+
+3. Go to project repositories as per the task  
+ll /tmp/
+cd   /usr/src/kodekloudrepos/demo/ 
+ll 
+
+4. Copy html file from tmp to repo   
+cp /tmp/index.html  . 
+ll
+
+5.  Add and commit the index.html file and push
+git add index.html 
+git commit -m "add index.html"  
+git push -u origin master 
